@@ -53,25 +53,39 @@ fraction returnInfo(int num) { // 특정 수의 stage와 index를 반환합니다.
 }
 
 int returnNumerator(fraction num) {
-	int numerator = 0;
+	int numerator = 1;
 
 	if (num.stage % 2 == 0) {
-
+		for (int i = 0; i < num.index; i++) {
+			numerator++;
+		}
 	}
 	else {
-
+		numerator = num.stage;
+		for (int i = 0; i < num.index; i++) {
+			numerator--;
+		}
 	}
+
+	return numerator;
 }
 
 int returnDenominator(fraction num) {
-	int denominator = 0;
+	int denominator = 1;
 
 	if (num.stage % 2 == 0) {
-
+		denominator = num.stage;
+		for (int i = 0; i < num.index; i++) {
+			denominator--;
+		}
 	}
 	else {
-
+		for (int i = 0; i < num.index; i++) {
+			denominator++;
+		}
 	}
+
+	return denominator;
 }
 
 int main(void)
