@@ -65,7 +65,9 @@ manage returnBreakEvenPoint(manage target) {
 
 	// 2. 일차부등식 i > A / (C-B)를 이용해 최소판매량을 검사한다.
 	else {
-		target.isProfit = floor(target.fixedCost / ((target.resaleCost - target.productionCost) + 0.5)) + 1; // +1은 손익분기점 넘어야 하므로
+		// target.isProfit = floor((target.fixedCost / (target.resaleCost - target.productionCost)) + 0.5) + 1; // +1은 손익분기점 넘어야 하므로
+
+		target.isProfit = target.fixedCost / (target.resaleCost - target.productionCost) + 1;
 
 		/*
 		if (target.resaleCost * target.isProfit == target.fixedCost + target.productionCost * target.isProfit) {
