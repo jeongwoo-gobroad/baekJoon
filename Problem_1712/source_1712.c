@@ -17,7 +17,7 @@ void isProfitable(manage* target) {
 	new_int tempVal1 = target->resaleCost - (target->fixedCost + target->productionCost);
 	new_int tempVal2 = target->resaleCost * 2 - (target->fixedCost + target->productionCost * 2);
 
-	if (tempVal1 > tempVal2) {
+	if (tempVal1 >= tempVal2) { // 같을 경우도 손익분기점이 존재하지 않기에 등호가 필요하다. 생산단가와 판매가가 일치하기에 부등식이 0으로 나눠지게된다.
 		target->isProfit = -1;
 	}
 	else {
