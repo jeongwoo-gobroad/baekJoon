@@ -2,19 +2,20 @@
 // Baekjoon Problem No. 1712
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <math.h>
 
-typedef unsigned long u_int;
+typedef unsigned long new_int;
 
 typedef struct management {
-	u_int fixedCost;
-	u_int productionCost;
-	u_int resaleCost;
+	new_int fixedCost;
+	new_int productionCost;
+	new_int resaleCost;
 	int isProfit;
 } manage;
 
 void isProfitable(manage* target) {
-	int tempVal1 = target->resaleCost - (target->fixedCost + target->productionCost);
-	int tempVal2 = target->resaleCost * 2 - (target->fixedCost + target->productionCost * 2);
+	new_int tempVal1 = target->resaleCost - (target->fixedCost + target->productionCost);
+	new_int tempVal2 = target->resaleCost * 2 - (target->fixedCost + target->productionCost * 2);
 
 	if (tempVal1 > tempVal2) {
 		target->isProfit = -1;
@@ -64,11 +65,13 @@ manage returnBreakEvenPoint(manage target) {
 
 	// 2. 일차부등식 i > A / (C-B)를 이용해 최소판매량을 검사한다.
 	else {
-		target.isProfit = target.fixedCost / (target.resaleCost - target.productionCost) + 0.5;
+		target.isProfit = floor(target.fixedCost / (target.resaleCost - target.productionCost) + 0.5) + 1; // +1은 손익분기점 넘어야 하므로
 
+		/*
 		if (target.resaleCost * target.isProfit == target.fixedCost + target.productionCost * target.isProfit) {
 			target.isProfit += 1; // 손익분기점을 "넘어"야 하므로
 		}
+		*/
 	}
 
 	/*
